@@ -1,20 +1,23 @@
 ﻿using System;
 
-public class Box
+namespace Locker
 {
-    private string id;
-    private Size size;
-
-    public string ID { get => id; }
-    public Size Size { get => size; }
-
-    public Box()
+    public class Box
     {
-        this.id = Util.CreateUniqueID();
-    }
+        private string id;
+        private Size size;
 
-    public Box(Size size) : this()
-    {
-        this.size = size;
+        public string ID { get => id; }
+        public Size Size { get => size; }
+
+        public Box()
+        {
+            this.id = Util.CreateUniqueID();
+        }
+
+        public Box(Size size) : this()
+        {
+            this.size = size;
+        }
     }
 }

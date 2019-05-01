@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Locker;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Xunit;
 
-namespace LockerManagerTest
+namespace LockerTest
 {
     public class BoxTest
     {

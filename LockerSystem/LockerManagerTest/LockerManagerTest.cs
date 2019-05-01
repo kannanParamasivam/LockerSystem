@@ -1,7 +1,8 @@
+using Locker;
 using System;
 using Xunit;
 
-namespace Locker
+namespace LockerTest
 {
     public class LockerManagerTest
     {

@@ -1,10 +1,14 @@
 ﻿using System;
+namespace Locker
+{
 
-public static class Util {
-
-    public static string CreateUniqueID()
+    public static class Util
     {
-        return Guid.NewGuid().ToString();
-    }
 
+        public static string CreateUniqueID()
+        {
+            return Guid.NewGuid().ToString();
+        }
+
+    }
 }

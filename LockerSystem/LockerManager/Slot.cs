@@ -9,7 +9,7 @@ namespace Locker
 
         public Size Size { get => size; }
         public string ID { get => id; }
-        public Box Box { get => box; set => box = value; }
+        public Box Box { get => box; }
         public bool IsEmpty { get => box == null; }
 
         public Slot()
@@ -30,6 +30,17 @@ namespace Locker
             Box tempBox = this.box;
             this.box = null;
             return tempBox;
+        }
+
+        public void PlaceBox(Box box)
+        {
+            if (box == null)
+                throw new Exception("Box is not valid");
+
+            if (!this.IsEmpty)
+                throw new Exception("Slot is occupied");
+
+            this.box = box;
         }
     }
 }

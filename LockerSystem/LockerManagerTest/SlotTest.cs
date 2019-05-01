@@ -39,10 +39,8 @@ namespace LockerTest
         [Fact]
         public void IsEmpty_When_SlotHasBox_Should_BeFalse()
         {
-            Slot slot = new Slot
-            {
-                Box = new Box()
-            };
+            Slot slot = new Slot();
+            slot.PlaceBox(new Box());
 
             Assert.False(slot.IsEmpty);
         }
@@ -57,12 +55,36 @@ namespace LockerTest
         [Fact]
         public void EmptyTheSlot_When_HasBox_Should_ReturnTheBox()
         {
-            Slot slot = new Slot
-            {
-                Box = new Box(Size.Medium)
-            };
+            Slot slot = new Slot();
+            slot.PlaceBox(new Box(Size.Medium));
 
             Assert.True(slot.EmptyTheSlot()?.Size == Size.Medium);
+        }
+
+        [Fact]
+        public void PlaceBox_When_SlotIsNotEmpty_Should_Throw_Excpetion()
+        {
+            Slot slot = new Slot();
+            slot.PlaceBox(new Box());
+
+            Exception ex = Assert.Throws<Exception>(() => slot.PlaceBox(new Box()));
+            Assert.Equal("Slot is occupied", ex.Message);
+        }
+
+        [Fact]
+        public void PlaceBox_When_BoxIsNull_Should_ThrowException()
+        {
+            Slot slot = new Slot();
+            Exception ex = Assert.Throws<Exception>(() => slot.PlaceBox(null));
+            Assert.Equal("Box is not valid", ex.Message);
+        }
+
+        [Fact]
+        public void PlaceBox_When_BoxIsValidAndSlotIsEmpty_Should_BeAbleToPlaceBox()
+        {
+            Slot slot = new Slot();
+            slot.PlaceBox(new Box(Size.Medium));
+            Assert.False(slot.IsEmpty);
         }
     }
 }

@@ -32,5 +32,11 @@ namespace Locker
             Exception ex = Assert.Throws<Exception>(() => new LockerManager(6));
             Assert.Equal("Number of Lockers Should be multiples of 4", ex.Message);
         }
+
+        [Fact]
+        public void LockerManager_When_NoOfLockersProvided_Should_CreateLockerInstances()
+        {
+            Assert.Equal(40, new LockerManager(40).NumberOfLockers);
+        }
     }
 }
